@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menú | Café Volcán</title>
+<meta name="description" content="Bebidas, desayunos y postres de Café Volcán. Arma tu pedido y genera tu factura.">
+<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="assets/img/logo.svg" alt="Logo de Café Volcán" width="40" height="40"><span>Café Volcán</span></a>
+  <button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">☰</button>
+  <nav aria-label="Principal">
+    <ul id="menu-principal">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="menu.html" aria-current="page">Menú</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+<div class="mola" aria-hidden="true"></div>
+<main id="contenido">
+<section class="narrow">
+  <h1>Menú</h1>
+  <p>Precios en balboas (B/.). Toca el botón + para agregar productos a tu pedido.</p>
+</section>
+
+<section class="grid cols-3">
+  <article class="card">
+    <h2>Café</h2>
+    <ul class="precios">
+      <li><span>Espresso</span><b>B/. 2.00</b><button type="button" class="add" data-nombre="Espresso" data-precio="2.00" aria-label="Agregar Espresso">+</button></li>
+      <li><span>Latte</span><b>B/. 3.50</b><button type="button" class="add" data-nombre="Latte" data-precio="3.50" aria-label="Agregar Latte">+</button></li>
+      <li><span>V60 de origen</span><b>B/. 4.50</b><button type="button" class="add" data-nombre="V60 de origen" data-precio="4.50" aria-label="Agregar V60 de origen">+</button></li>
+      <li><span>Cold brew</span><b>B/. 3.75</b><button type="button" class="add" data-nombre="Cold brew" data-precio="3.75" aria-label="Agregar Cold brew">+</button></li>
+    </ul>
+  </article>
+  <article class="card">
+    <h2>Desayunos</h2>
+    <ul class="precios">
+      <li><span>Hojaldra con huevo</span><b>B/. 4.25</b><button type="button" class="add" data-nombre="Hojaldra con huevo" data-precio="4.25" aria-label="Agregar Hojaldra con huevo">+</button></li>
+      <li><span>Tostada de aguacate</span><b>B/. 5.50</b><button type="button" class="add" data-nombre="Tostada de aguacate" data-precio="5.50" aria-label="Agregar Tostada de aguacate">+</button></li>
+      <li><span>Pan de yuca (3)</span><b>B/. 3.00</b><button type="button" class="add" data-nombre="Pan de yuca (3)" data-precio="3.00" aria-label="Agregar Pan de yuca">+</button></li>
+    </ul>
+  </article>
+  <article class="card">
+    <h2>Postres</h2>
+    <ul class="precios">
+      <li><span>Tres leches</span><b>B/. 3.75</b><button type="button" class="add" data-nombre="Tres leches" data-precio="3.75" aria-label="Agregar Tres leches">+</button></li>
+      <li><span>Brownie de cacao</span><b>B/. 3.25</b><button type="button" class="add" data-nombre="Brownie de cacao" data-precio="3.25" aria-label="Agregar Brownie de cacao">+</button></li>
+      <li><span>Bollo de maíz</span><b>B/. 2.50</b><button type="button" class="add" data-nombre="Bollo de maíz" data-precio="2.50" aria-label="Agregar Bollo de maíz">+</button></li>
+    </ul>
+  </article>
+</section>
+
+<section class="pedido card" aria-labelledby="t-pedido">
+  <h2 id="t-pedido">Tu pedido</h2>
+  <p id="pedido-vacio">Aún no has agregado nada.</p>
+  <ul class="precios" id="lista-pedido"></ul>
+  <p class="total-linea">Total (con ITBMS 7 %): <strong id="pedido-total">B/. 0.00</strong></p>
+  <label for="cliente">Nombre para la factura (opcional)</label>
+  <input id="cliente" type="text" autocomplete="name">
+  <p class="acciones">
+    <button type="button" class="btn" id="btn-factura" disabled>Generar factura</button>
+    <button type="button" class="btn btn-alt" id="btn-vaciar">Vaciar pedido</button>
+  </p>
+</section>
+</main>
+<footer class="site-footer">
+  <p>© <span id="anio">2026</span> Café Volcán · Ficticio, proyecto académico · Universidad de Panamá</p>
+  <p>Calle 4.ª Este, Casco Antiguo, Ciudad de Panamá · +507 555-0123</p>
+</footer>
+
+<dialog id="factura" aria-labelledby="f-titulo">
+  <h2 id="f-titulo">Café Volcán</h2>
+  <p>Factura de consumo · Calle 4.ª Este, Casco Antiguo</p>
+  <p id="f-meta"></p>
+  <table>
+    <thead><tr><th scope="col">Producto</th><th scope="col">Cant.</th><th scope="col">Importe</th></tr></thead>
+    <tbody id="f-items"></tbody>
+  </table>
+  <p class="f-linea">Subtotal: <span id="f-sub"></span></p>
+  <p class="f-linea">ITBMS (7 %): <span id="f-imp"></span></p>
+  <p class="f-linea f-total">Total: <span id="f-total"></span></p>
+  <p class="gracias">¡Gracias por venir a Café Volcán! Te esperamos pronto.</p>
+  <p class="acciones">
+    <button type="button" class="btn" id="f-imprimir">Imprimir</button>
+    <button type="button" class="btn btn-alt" id="f-cerrar">Cerrar</button>
+  </p>
+</dialog>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
